@@ -3,8 +3,8 @@ include(__DIR__."/dbcon.php");
 include("../service/singleUserPass.php");
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $success = "Location: http://localhost/file_crud/read.php?msg=record updated successfull!";
-    $err = "Location: http://localhost/file_crud/read.php?err=record not update failed!";
+    $success = "Location: http://localhost/file_crud/index.php?msg=record updated successfull!";
+    $err = "Location: http://localhost/file_crud/index.php?err=record not update failed!";
     $id = $_POST["id"];
     $title = $_POST["title"];
     

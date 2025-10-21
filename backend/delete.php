@@ -13,8 +13,8 @@ if(isset($_GET["id"])){
     if(file_exists("../".$file_address)){        
         if(unlink("../".$file_address)){
             
-        $success = "Location: http://localhost/file_crud/read.php?msg=record delete successfull!";
-        $err = "Location: http://localhost/file_crud/read.php?err=record not delete failed!";
+        $success = "Location: http://localhost/file_crud/index.php?msg=record delete successfull!";
+        $err = "Location: http://localhost/file_crud/index.php?err=record not delete failed!";
         $sql = "DELETE FROM blog WHERE id='$id'";
         echo mysqli_query($conn,$sql) ? header($success) : header($err);
 

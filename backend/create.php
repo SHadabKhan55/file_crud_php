@@ -15,8 +15,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if(move_uploaded_file($tmp_dir,"../".$current_dir)){
-        $success = "Location: http://localhost/file_crud/read.php?msg=record create successfull!";
-        $err = "Location: http://localhost/file_crud/read.php?err=record not create failed!";
+        $success = "Location: http://localhost/file_crud/index.php?msg=record create successfull!";
+        $err = "Location: http://localhost/file_crud/index.php?err=record not create failed!";
         $sql = "INSERT INTO blog(title,thumnail) VALUES ('$title','$current_dir')";
 
         echo mysqli_query($conn,$sql) ? header($success) : header($err);

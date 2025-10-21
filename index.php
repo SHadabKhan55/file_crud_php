@@ -21,6 +21,15 @@
     
     ?>
     <a href="http://localhost/file_crud/create.php"><button>add record</button></a>
+
+    <form  method="get">
+        <input type="text" name="search" placeholder="search..."
+        value="<?php echo isset($_GET["search"]) ? $_GET["search"] : ""?>" 
+
+        >
+        <button type="submit">search</button>
+        <a href="http://localhost/file_crud/index.php"><button type="button">clear</button></a>
+    </form>
     <table border="2">
         <thead>
             <th>Rno</th>
@@ -32,9 +41,18 @@
             <?php 
             include("./backend/dbcon.php");
             $i=1;
-            $sql = "SELECT * FROM blog";
-            $result = mysqli_query($conn,$sql);
+            if(isset($_GET["search"]) && $_GET["search"] != ""){
+                $search = $_GET["search"];
+                $sql = "SELECT * FROM blog WHERE title LIKE '%$search%'";
+            }else{
+                $sql = "SELECT * FROM blog";
+            }
 
+            $result = mysqli_query($conn,$sql);
+            
+            if($result && mysqli_num_rows($result) > 0){
+
+            
             foreach($result as $row){?>
                 <tr>
                     <td><?php echo $i++ ?></td>
@@ -48,7 +66,11 @@
                     </td>
 
                 </tr>
-           <?php } ?>
+           <?php }
+            }else{?>
+            
+                <h3>No record match</h3>
+            <?php } ?>
         </tbody>
     </table>
 </body>
